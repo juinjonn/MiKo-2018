@@ -1,10 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Miko交易所</title>
+    <style>
+        .container {
+            position: relative;
+            width: 90%;
+            height: 100px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        h1.hTop {
+            position: relative;
+            text-align: center;
+            font-size: 70px;
+            color: #333333;
+            margin: auto;
+            top: -36px;
+        }
+        
+        #jumbtn1 {
+            position: relative;
+            background-color: rgba(223, 69, 69, 0.26);
+            margin: auto;
+            height: 75px;
+            top: 50px;
+        }
+        
+        #myDogsBtn {
+            position: absolute;
+            border-radius: 50%;
+            border-width: 2px;
+            border-color: #33333377;
+            left: 71%;
+            top: 12%;
+            font-size: 15px;
+        }
+        
+        .UserDiv {
+            position: absolute;
+            height: 10%;
+            width: 100%;
+            top: 0;
+        }
+        
+        .userName {
+            position: relative;
+            top: 14%;
+            left: 75%;
+            font-size: 20px;
+            width: 12%;
+        }
+        
+        #loginOut {
+            position: relative;
+            left: 84%;
+            top: 5%;
+            border-width: 2px;
+            border-radius: 20%;
+            border-color: #33333377;
+            font-size: 20px;
+            text-align: left;
+        }
+        
+        .botDiv {
+            position: absolute;
+            height: 11%;
+            bottom: 0px;
+            width: 100%;
+            border-top: 2px solid;
+            border-top-color: #33333341;
+        }
+        
+        #marketBtn {
+            position: absolute;
+            border-width: 0px;
+            left: 20%;
+            top: 7%;
+            font-size: 19px;
+        }
+        
+        .dogP {
+            position: absolute;
+            top: 62%;
+            font-size: 14px;
+            left: 19.6%;
+            color: rgb(209, 19, 19);
+            width: 10%;
+        }
+        
+        #myDogsFamilyBtn {
+            position: absolute;
+            border-width: 0px;
+            left: 73%;
+            top: 7%;
+            font-size: 19px;
+        }
+        
+        .myDogsP {
+            position: absolute;
+            top: 62%;
+            font-size: 14px;
+            left: 72.8%;
+            color: rgb(209, 19, 19);
+            width: 10%;
+        }
+        
+        .dogPicture {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            top: 26%;
+            border-radius: 5%;
+        }
+        
+        .dogPicture>img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .dogPicture.one {
+            background: aqua;
+            left: 6%;
+        }
+        
+        .dogPicture.two {
+            background: rgb(17, 201, 57);
+            left: 24%;
+        }
+        
+        .dogPicture.three {
+            background: rgb(202, 113, 30);
+            left: 43%;
+        }
+        
+        .dogPicture.four {
+            background: rgb(221, 23, 221);
+            left: 61%;
+        }
+        
+        .dogPicture.five {
+            background: rgb(230, 9, 64);
+            left: 79.4%;
+        }
+        
+        .dogGenerations {
+            position: absolute;
+            background: rgb(29, 159, 235);
+            top: 50%;
+            height: 3%;
+            width: 5%;
+            border-radius: 10%;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .dogGenerations.one {
+            left: 6%;
+        }
+        
+        .dogGenerations.two {
+            left: 24%;
+        }
+        
+        .dogGenerations.three {
+            left: 43%;
+        }
+        
+        .dogGenerations.four {
+            left: 61%;
+        }
+        
+        .dogGenerations.five {
+            left: 79.4%;
+        }
+        
+        .dogList {
+            position: absolute;
+            top: 55%;
+        }
+        
+        .dogList.one {
+            left: 5%;
+        }
+        
+        .dogList.two {
+            left: 23%;
+        }
+        
+        .dogList.three {
+            left: 42%;
+        }
+        
+        .dogList.four {
+            left: 60%;
+        }
+        
+        .dogList.five {
+            left: 78.4%;
+        }
+        
+        .btn {
+            position: absolute;
+            top: 73%;
+        }
+        
+        .btn.btn-primary.one {
+            left: 9%;
+        }
+        
+        .btn.btn-primary.two {
+            left: 27%;
+        }
+        
+        .btn.btn-primary.three {
+            left: 46%;
+        }
+        
+        .btn.btn-primary.four {
+            left: 64.5%;
+        }
+        
+        .btn.btn-primary.five {
+            left: 82.7%;
+        }
+        
+        .pagination {
+            position: absolute;
+            top: 79%;
+            left: 43%;
+        }
+        
+        .dogLevel {
+            position: absolute;
+            background: rgb(223, 83, 18);
+            top: 50%;
+            height: 3%;
+            width: 3%;
+            border-radius: 16%;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .dogLevel.one {
+            left: 12%
+        }
+        
+        .dogLevel.two {
+            left: 30%
+        }
+        
+        .dogLevel.three {
+            left: 49%
+        }
+        
+        .dogLevel.four {
+            left: 67%
+        }
+        
+        .dogLevel.five {
+            left: 85.3%
+        }
+        
+        .changePriceWrapper {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: hsla(0, 0%, 80%, .4);
+            /* display: none; */
+        }
+        
+        .hideBox {
+            display: none;
+        }
+        
+        .changePrice {
+            position: absolute;
+            z-index: 1000;
+            top: 50%;
+            left: 50%;
+            font-size: 20px;
+            transform: translateX(-50%) translateY(-50%)
+        }
+        
+        .changePrice>input {
+            padding: 0;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
+
 <body>
-Miko交易所
+    <div class="container">
+        <div class="jumbotron" id="jumbtn1">
+            <h1 class="hTop">Miko交易所</h1>
+            <p class="p1"></p>
+        </div>
+    </div>
+
+    <div class="UserDiv">
+        <button type="button" class="btn btn-default btn-sm btn-myInfor" id="myDogsBtn" role="button" data-toggle="popover" data-trigger="focus" title="用户资料" data-placement="bottom">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </button>
+        <span class="userName">请登录</span>
+        <button type="button" class="btn btn-default btn-loginOut" id="loginOut">注销</button>
+    </div>
+    <div class="botDiv">
+        <button type="button" class="btn btn-default btn-lg btn-dogMarket" id="marketBtn">
+            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+        </button>
+        <span class="dogP">狗狗集市</span>
+        <button type="button" class="btn btn-default btn-lg btn-myDog" id="myDogsFamilyBtn">
+            <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+        </button>
+        <span class="myDogsP">我的狗窝</span>
+    </div>
+    <!-- 第一个 -->
+    <div class="content_box">
+        <div class="dogPicture one"></div>
+        <div class="dogGenerations one">第0代</div>
+        <button type="button" id="myButton" data-loading-text="交易中..." class="btn btn-primary one" autocomplete="off"></button>
+        <ul class="dogList one">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="dogLevel one"></div>
+    </div>
+    <!-- 第二个 -->
+    <div class="content_box">
+        <div class="dogPicture two"></div>
+        <div class="dogGenerations two">第0代</div>
+        <button type="button" id="myButton" data-loading-text="交易中..." class="btn btn-primary two" autocomplete="off"></button>
+        <ul class="dogList two">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="dogLevel two"></div>
+    </div>
+    <!-- 第三个 -->
+    <div class="content_box">
+        <div class="dogPicture three"></div>
+        <div class="dogGenerations three">第0代</div>
+        <button type="button" id="myButton" data-loading-text="交易中..." class="btn btn-primary three" autocomplete="off"></button>
+        <ul class="dogList three">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="dogLevel three"></div>
+    </div>
+
+    <!-- 第四个 -->
+    <div class="content_box">
+        <div class="dogPicture four"></div>
+        <div class="dogGenerations four">第0代</div>
+        <button type="button" id="myButton" data-loading-text="交易中..." class="btn btn-primary four" autocomplete="off"></button>
+        <ul class="dogList four">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="dogLevel four"></div>
+    </div>
+    <!-- 第五个 -->
+    <div class="content_box">
+        <div class="dogPicture five"></div>
+        <div class="dogGenerations five">第0代</div>
+        <button type="button" id="myButton" data-loading-text="交易中..." class="btn btn-primary five" autocomplete="off"></button>
+        <ul class="dogList five">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="dogLevel five"></div>
+    </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-sm">
+            <li>
+                <a href="#" aria-label="Previous" class="lastPage">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li class="next">
+                <a href="#" aria-label="Next" class="nextPage">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="changePriceWrapper hideBox">
+        <div class="changePrice">
+            <span>修改价格</span>
+            <input type="text" class="input_changPrice">
+            <button class="btn_cancel">取消</button>
+            <button class="btn_fix">确定</button>
+        </div>
+    </div>
+    <script>
+        // 当前页数
+        var page = 0
+            // 当前是处于狗狗集市还是我的狗窝
+        var miko = 'dogMarket'
+        var myDogArr = []
+        var dogArr = []
+        var myInFormationArr = []
+            // 初始化
+        function init() {
+            // 获取数据
+            $.get('/Miko/myDogs', function(data) {
+                if (document.cookie == '') {
+                    return;
+                }
+                data = JSON.parse(data);
+                while (data.length > 0) {
+                    myDogArr.push(data.splice(0, 5))
+                }
+            })
+            $.get('/Miko/selectSellDogs', function(data) {
+                data = JSON.parse(data);
+
+                while (data.length > 0) {
+                    dogArr.push(data.splice(0, 5))
+                }
+                pagenation(dogArr);
+                putdata(0)
+            })
+            if (document.cookie != null) {
+                var userNameCookie = getcookie('userCookie');
+                $('.userName').html(userNameCookie);
+            }
+            $.get('/Miko/myInFormation', {
+
+            }, function(data) {
+
+                data = JSON.parse(data);
+                myInFormationArr.push(data);
+                var txt = document.getElementById("myDogsBtn");
+                txt.setAttribute("data-html", "true");
+                txt.setAttribute("popover-content", "<li>用户账号：" + data.userAccount + "</li> <li>用户余额：" + data.balance + "</li> <li>用户密文：" + data.userCipher + "</li> ");
+            })
+
+        }
+        init()
+
+        function getcookie(objname) { //获取指定名称的cookie的值
+            var arrstr = document.cookie.split("; ");
+            for (var i = 0; i < arrstr.length; i++) {
+                var temp = arrstr[i].split("=");
+                if (temp[0] == objname) return unescape(temp[1]);
+            }
+        }
+
+        function pagenation(data) {
+            let num = data.length;
+            let html = '';
+            for (i = 0; i < num; i++) {
+                html += `<li><a href="#" class="changePage">${i+1}</a></li>`
+            }
+            $('.changePage').remove();
+            $(html).insertBefore($('.next'));
+            $('.changePage').click(function() {
+                let index = Number(this.innerHTML) - 1
+                page = index
+                putdata(index)
+            })
+        }
+
+        function checkCookie() {
+            if (document.cookie == '') {
+                alert('请登录，在进行操作');
+                return;
+            }
+        }
+
+        function putdata(index) {
+            // index为第几页
+            // dogPicture图片
+            // dogLevel等级
+            // dogList描述
+            let arr
+            if (miko == 'dogMarket') {
+                arr = dogArr[index]
+            } else {
+                arr = myDogArr[index]
+            }
+
+            for (let i = 0; i < 5; i++) {
+                if (i <= arr.length - 1) {
+                    $('.content_box').eq(i).removeClass('hideBox')
+                    $('.dogLevel')[i].innerHTML = arr[i].petLevel
+                    let liArr = $('.dogList').eq(i).children()
+                    liArr[0].innerHTML = 'M狗ID：' + arr[i].dogNumber
+                    liArr[1].innerHTML = '价格：' + arr[i].petPrice
+                    liArr[2].innerHTML = '眼睛类型：' + arr[i].petEyes
+                    liArr[3].innerHTML = '嘴的类型：' + arr[i].petMouth
+                    liArr[4].innerHTML = '花纹颜色：' + arr[i].petPattern
+                    liArr[5].innerHTML = '翅膀类型：' + arr[i].petWing
+                    let img = new Image()
+                    img.src = '' + arr[i].dogNumber + '.png'
+                    $('.dogPicture').eq(i).empty()
+                    $('.dogPicture').eq(i).append(img)
+                    if (miko == 'dogMarket') {
+                        $('.btn-primary')[i].innerHTML = '<买入此狗>'
+                    } else {
+                        $('.btn-primary')[i].innerHTML = '<卖了此狗>'
+                    }
+                } else {
+                    $('.content_box').eq(i).addClass('hideBox')
+                }
+
+            }
+        }
+        //翻页事件
+
+        // 上一页
+        $('.lastPage').click(function() {
+                if (page !== 0) {
+                    page--
+                    putdata(page)
+                }
+            })
+            // 下一页
+        $('.nextPage').click(function() {
+                if (page !== 4) {
+                    page++
+                    putdata(page)
+                }
+            })
+            // 切换到狗狗集市
+        $('.btn-dogMarket').click(function() {
+                miko = 'dogMarket'
+                page = 0
+                putdata(page)
+                pagenation(dogArr)
+            })
+            // 切换到我的狗窝
+        $('.btn-myDog').click(function() {
+                checkCookie();
+                miko = 'myDog'
+                page = 0
+                putdata(page)
+                pagenation(myDogArr);
+            })
+            // 买狗或卖狗
+        $('.btn-primary').click(function() {
+            checkCookie();
+
+            var i = $(this).hasClass('one') ? 0 : $(this).hasClass('two') ? 1 : $(this).hasClass('three') ? 2 : $(this).hasClass('four') ? 3 : 4
+            if (miko == 'dogMarket') {
+                // 买狗
+                $.get('/Miko/buyDog', {
+                    dogNumber: dogArr[page][i].dogNumber
+                }, function(data) {
+                    window.open("/", "_self");
+                    alert(data);
+                })
+            } else {
+                // 先修改价格
+                $('.changePriceWrapper').removeClass('hideBox')
+                $('.input_changPrice').val(myDogArr[page][i].petPrice)
+                $('.btn_cancel').click(function() {
+                    $('.changePriceWrapper').addClass('hideBox')
+                })
+                $('.btn_fix').click(function() {
+                    $.get('/Miko/saleDog', {
+                        dogNumber: myDogArr[page][i].dogNumber,
+                        petPrice: $('.input_changPrice').val()
+                    }, function(data) {
+                        data = JSON.parse(data);
+                        if (data == true) {
+                            window.open("/", "_self");
+                            alert('已经挂到市场');
+                        } else {
+                            window.open("/", "_self");
+                            alert('卖出失败');
+                        }
+
+                    })
+                    $('.changePriceWrapper').addClass('hideBox')
+                })
+            }
+        })
+        $('.btn-loginOut').click(function() {
+            $.get('/Miko/loginOut', {
+
+            }, function(data) {
+                window.open("/", "_self");
+            })
+        })
+
+        $('.btn-myInfor').click(function() {
+            if (document.cookie == '') {
+                window.open("/Miko/login", "_self");
+            } else {
+                $('.btn-myInfor').popover('show');
+                $.get('/Miko/myInFormation', {
+
+                }, function(data) {
+
+                    data = JSON.parse(data);
+                    console.log(data)
+                    var txt = document.getElementById("myDogsBtn");
+                    txt.setAttribute("data-html", "true");
+                    txt.setAttribute("data-content", "<li>用户账号：" + data.userAccount + "</li> <li>用户余额：" + data.balance + "</li> <li>用户密文：" + data.userCipher + "</li> ");
+                })
+            }
+        })
+    </script>
+
 </body>
+
 </html>

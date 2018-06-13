@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MiKo@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="MiKo">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="miko_dog">
+      <Comment>MIKO的宠物表</Comment>
+    </table>
+    <table id="8" parent="2" name="miko_transaction">
+      <Comment>MIKO的交易表</Comment>
+    </table>
+    <table id="9" parent="2" name="miko_transaction_UXTO">
+      <Comment>MIKO的交易表</Comment>
+    </table>
+    <table id="10" parent="2" name="miko_transaction_record_table">
+      <Comment>MIKO的交易表</Comment>
+    </table>
+    <table id="11" parent="2" name="miko_user">
+      <Comment>MIKO的用户表</Comment>
+    </table>
+    <column id="12" parent="7" name="id">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="13" parent="7" name="dog_number">
+      <Position>2</Position>
+      <Comment>宠物编号</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="14" parent="7" name="generations_num">
+      <Position>3</Position>
+      <Comment>宠物第几代</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="15" parent="7" name="pet_eyes">
+      <Position>4</Position>
+      <Comment>宠物的眼睛类型</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="16" parent="7" name="pet_mouth">
+      <Position>5</Position>
+      <Comment>宠物的嘴类型</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="17" parent="7" name="pet_pattern">
+      <Position>6</Position>
+      <Comment>宠物的花纹类型</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="18" parent="7" name="pet_wing">
+      <Position>7</Position>
+      <Comment>宠物的翅膀类型</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="19" parent="7" name="pet_level">
+      <Position>8</Position>
+      <Comment>宠物的等级</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="20" parent="7" name="pet_price">
+      <Position>9</Position>
+      <Comment>宠物价格</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="21" parent="7" name="cipher_text">
+      <Position>10</Position>
+      <Comment>拥有者密文</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="22" parent="7" name="is_sale">
+      <Position>11</Position>
+      <Comment>是否正在被销售</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="23" parent="7" name="is_reproduction">
+      <Position>12</Position>
+      <Comment>是否已繁殖</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="24" parent="7" name="is_flag">
+      <Position>13</Position>
+      <Comment>是否被上链</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="25" parent="7" name="dog_number">
+      <ColNames>dog_number</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="26" parent="7" name="idx_cipherText">
+      <ColNames>cipher_text</ColNames>
+    </index>
+    <index id="27" parent="7" name="idx_dogNumber">
+      <ColNames>dog_number</ColNames>
+    </index>
+    <index id="28" parent="7" name="idx_generationsNum">
+      <ColNames>generations_num</ColNames>
+    </index>
+    <index id="29" parent="7" name="idx_isReproduction">
+      <ColNames>is_reproduction</ColNames>
+    </index>
+    <index id="30" parent="7" name="idx_isSale">
+      <ColNames>is_sale</ColNames>
+    </index>
+    <index id="31" parent="7" name="idx_petEyes_petMouth_petPattern_petWing">
+      <ColNames>pet_eyes
+pet_mouth
+pet_pattern
+pet_wing</ColNames>
+    </index>
+    <key id="32" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="33" parent="7" name="dog_number">
+      <ColNames>dog_number</ColNames>
+      <UnderlyingIndexName>dog_number</UnderlyingIndexName>
+    </key>
+    <column id="34" parent="8" name="id">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="8" name="buyer_text">
+      <Position>2</Position>
+      <Comment>买家公钥</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="8" name="seller_text">
+      <Position>3</Position>
+      <Comment>卖家公钥</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="37" parent="8" name="dog_number">
+      <Position>4</Position>
+      <Comment>宠物编号</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <index id="38" parent="8" name="dog_number">
+      <ColNames>dog_number</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="40" parent="8" name="dog_number">
+      <ColNames>dog_number</ColNames>
+      <UnderlyingIndexName>dog_number</UnderlyingIndexName>
+    </key>
+    <column id="41" parent="9" name="id">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="9" name="transaction_id">
+      <Position>2</Position>
+      <Comment>交易号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="9" name="transaction_output">
+      <Position>3</Position>
+      <Comment>交易买家输出地址1（用户公钥）</Comment>
+      <DataType>varchar(130)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="44" parent="9" name="buyer_balance">
+      <Position>4</Position>
+      <Comment>交易后买家余额</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;3000&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="9" name="transaction_input">
+      <Position>5</Position>
+      <Comment>交易卖家输入地址</Comment>
+      <DataType>varchar(130)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="9" name="seller_balance">
+      <Position>6</Position>
+      <Comment>交易后卖家余额</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="9" name="transaction_dogs">
+      <Position>7</Position>
+      <Comment>交易狗狗号</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <index id="48" parent="9" name="idx_transaction_input">
+      <ColNames>transaction_input</ColNames>
+    </index>
+    <index id="49" parent="9" name="idx_transaction_output">
+      <ColNames>transaction_output</ColNames>
+    </index>
+    <key id="50" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="52" parent="10" name="pre_record_hashcode">
+      <Position>2</Position>
+      <Comment>上一次交易信息的hashcode</Comment>
+      <DataType>varchar(300)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="53" parent="10" name="record_hashcode">
+      <Position>3</Position>
+      <Comment>当前交易信息的hashcode</Comment>
+      <DataType>varchar(300)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="54" parent="10" name="area_num">
+      <Position>4</Position>
+      <Comment>第几区块</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="55" parent="10" name="transaction_orders">
+      <Position>5</Position>
+      <Comment>当前区块的交易信息清单</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <index id="56" parent="10" name="pre_record_hashcode">
+      <ColNames>pre_record_hashcode</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="57" parent="10" name="record_hashcode">
+      <ColNames>record_hashcode</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="58" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="59" parent="10" name="pre_record_hashcode">
+      <ColNames>pre_record_hashcode</ColNames>
+      <UnderlyingIndexName>pre_record_hashcode</UnderlyingIndexName>
+    </key>
+    <key id="60" parent="10" name="record_hashcode">
+      <ColNames>record_hashcode</ColNames>
+      <UnderlyingIndexName>record_hashcode</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="11" name="id">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="11" name="user_account_number">
+      <Position>2</Position>
+      <Comment>用户账号</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="63" parent="11" name="user_passWord">
+      <Position>3</Position>
+      <Comment>用户密码</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="64" parent="11" name="user_balance">
+      <Position>4</Position>
+      <Comment>用户余额</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="65" parent="11" name="create_time">
+      <Position>5</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="66" parent="11" name="update_time">
+      <Position>6</Position>
+      <Comment>更新时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="67" parent="11" name="cipher_text">
+      <Position>7</Position>
+      <Comment>用户秘钥</Comment>
+      <DataType>varchar(120)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="68" parent="11" name="public_text">
+      <Position>8</Position>
+      <Comment>用户公钥</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="69" parent="11" name="is_admin">
+      <Position>9</Position>
+      <Comment>是否是管理员</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="70" parent="11" name="cipher_text">
+      <ColNames>cipher_text</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="71" parent="11" name="idx_userAccountNumber_cipherText">
+      <ColNames>user_account_number
+cipher_text</ColNames>
+    </index>
+    <index id="72" parent="11" name="idx_userAccountNumber_userPassWord">
+      <ColNames>user_account_number
+user_passWord</ColNames>
+    </index>
+    <index id="73" parent="11" name="public_text">
+      <ColNames>public_text</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="74" parent="11" name="user_account_number">
+      <ColNames>user_account_number</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="75" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="76" parent="11" name="user_account_number">
+      <ColNames>user_account_number</ColNames>
+      <UnderlyingIndexName>user_account_number</UnderlyingIndexName>
+    </key>
+    <key id="77" parent="11" name="cipher_text">
+      <ColNames>cipher_text</ColNames>
+      <UnderlyingIndexName>cipher_text</UnderlyingIndexName>
+    </key>
+    <key id="78" parent="11" name="public_text">
+      <ColNames>public_text</ColNames>
+      <UnderlyingIndexName>public_text</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

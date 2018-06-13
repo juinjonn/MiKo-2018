@@ -1,12 +1,9 @@
 package com.HUST.JuinJonn.MiKo2018.dao;
 
-import com.HUST.JuinJonn.MiKo2018.model.MikoDog;
 import com.HUST.JuinJonn.MiKo2018.model.MikoTransactionRecord;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-
-import java.util.List;
 
 @Mapper
 public interface MikoTransactionRecordDao {
@@ -15,10 +12,10 @@ public interface MikoTransactionRecordDao {
      *
      * @param mikoTransactionRecord
      */
-    @Insert("insert into miko_transaction_recordTable " +
-            "(pre_record_hashcode,record_hashcode,area_num,list_num,transaction_count,buyer_cipher_text,seller_cipher_text,dog_number,)" +
+    @Insert("insert into miko_transaction_record_table " +
+            "(pre_record_hashcode,record_hashcode,transaction_orders,area_num)" +
             "values" +
-            "(#{preRecordHashCode},#{recordHashCode},#{areaNum},#{listNum},#{transactionCount},#{buyerCipherText},#{sellerCipherText},#{dogNumber})")
+            "(#{preRecordHashCode},#{recordHashCode},#{transactionOrders},#{areaNum})")
     void insertTransactionRecord(MikoTransactionRecord mikoTransactionRecord);
 
     /**
@@ -27,22 +24,12 @@ public interface MikoTransactionRecordDao {
      * @param recordHashCode
      * @return
      */
-    @Select("select * from miko_transaction_recordTable where record_hashcode = #{recordHashCode}")
+    @Select("select * from miko_transaction_record_table where record_hashcode = #{recordHashCode}")
     MikoTransactionRecord selectRecordByHashCode(String recordHashCode);
 
-    /**
-     * 根据卖家查询交易狗的信息
-     * @param sellerCipher
-     * @return
-     */
-    @Select("select * from miko_transaction_recordTable where seller_cipher = #{sellerCipher}")
-    List<MikoDog> selectDogBySellerCipher(String sellerCipher);
+    @Select("select record_hashcode from miko_transaction_record_table order by id desc LIMIT 1")
+    String selectPreRecordHash();
 
-    /**
-     * 根据买家查询交易狗的信息
-     * @param buyerCipher
-     * @return
-     */
-    @Select("select * from miko_transaction_recordTable where buyer_cipher = #{buyerCipher}")
-    List<MikoDog> selectDogByBuyerCipher(String buyerCipher);
+    @Select(" select area_num from miko_transaction_record_table order by id desc LIMIT 1")
+    Integer selectAreaNumLast();
 }
